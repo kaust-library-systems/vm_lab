@@ -1,10 +1,12 @@
 # VM Lab
 
-Creating and managing a test environment with virtual machines (VMs). The machines are created and provisioned using [Vagrant](https://www.vagrantup.com/), and for the configuration we will use [Anbible](https://www.ansible.com/).
+Creating and managing a test or a development environment with virtual machines (VMs). The machines are created and provisioned using [Vagrant](https://www.vagrantup.com/), and for the configuration we will use [Anbible](https://www.ansible.com/).
 
 ## Vagrant
 
-The operating system used for this laboratory is [Debian 12](https://www.debian.org/) packaged as a Vagrant Box [Bookworm 64 bit](https://app.vagrantup.com/debian/boxes/bookworm64), because it's similar, but much lighter than Ubuntu. The Vagrant file defines a basic VM with 1GB of memory and 2 CPUs. With this simple configuration we can start the VM:
+The operating system used for this laboratory is [Debian 12](https://www.debian.org/) packaged as a Vagrant Box [Bookworm 64 bit](https://app.vagrantup.com/debian/boxes/bookworm64), because it's similar, but much lighter than Ubuntu. 
+
+Everything starts with a `Vagrantfile`. The  `Vagrantfile` describes the virtual machines that will be used in the project. There can be only one `Vagrantfile` per project. The Vagrant file defines a basic VM with 1GB of memory and 2 CPUs. With this simple configuration we can start the VM:
 
 ```
 vagrant up
@@ -23,7 +25,6 @@ Release:        12
 Codename:       bookworm
 vagrant@bookworm:~$
 ```
-
 
 ## Ansible
 
