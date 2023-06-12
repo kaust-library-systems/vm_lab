@@ -37,5 +37,29 @@ Codename:       bookworm
 vagrant@bookworm:~$
 ```
 
+### Basic commands
+
+The basic Vagrant commands are:
+
+| command | meaning |
+| ------- | ------- |
+| init | initalize the Vagrantfile |
+| up | boot the VM |
+| halt | shutdown the VM |
+| reload | restart the VM |
+| destroy | deletes the VM |
+
+For example:
+
+```
+vagrant destroy
+```
+
+or
+
+```
+vagrant up
+```
+
 ## Ansible
 
