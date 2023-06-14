@@ -50,17 +50,5 @@ The basic Vagrant commands are:
 | reload | restart the VM |
 | destroy | deletes the VM |
 
-For example:
-
-```
-vagrant destroy
-```
-
-or
-
-```
-vagrant up
-```
-
 ## Ansible
 
