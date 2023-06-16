@@ -47,6 +47,8 @@ Linux sidon 6.1.0-9-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.27-1 (2023-05-08) x8
 (...)
 ```
 
+And the good thing is that the configuration seems to survive even if the guest is destroyed.
+
 ## Basic Commands
 
 The basic Vagrant commands are:
