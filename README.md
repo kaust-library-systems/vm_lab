@@ -37,7 +37,7 @@ Codename:       bookworm
 vagrant@bookworm:~$
 ```
 
-You will notice that `vagrant ssh` is quite slow (at last in Windows), and to improve the speed, you can define an entry in your `.ssh/config` with the Vagrant guest. See the 
+You will notice that `vagrant ssh` is quite slow (at last in Windows), and to improve the speed, you can define an entry in your `.ssh/config` with the Vagrant guest. See the [SSH config](docs/vagrant.md#ssh-config) part in the `vagrant.md`
 
 ### Basic commands
 
