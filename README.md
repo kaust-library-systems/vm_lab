@@ -39,7 +39,7 @@ vagrant@bookworm:~$
 
 ### Basic commands
 
-The basic [Vagrant commands](vagrant.md) are:
+The basic [Vagrant commands](docs/vagrant.md) are:
 
 | command | meaning |
 | ------- | ------- |
