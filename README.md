@@ -52,7 +52,7 @@ The basic [Vagrant commands](docs/vagrant.md) are:
 | reload | restart the VM |
 | destroy | deletes the VM |
 
-## Configuration
+## Apache2
 
 The focus of this lab is in Ansible, but it's possible to do simple configuration directly in the Vagrant file. As an example we will [install the Apache webserver](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11). But first we need to [expose the HTTP port](https://developer.hashicorp.com/vagrant/docs/networking/forwarded_ports) of the virtual machine to the host (our computer):
 
@@ -79,6 +79,13 @@ vagrant@sidon:~$ sudo systemctl status apache2
      (...)
 ```
 
+Verify that Apache is running by visiting the URL:
+
+```
+http://localhost:8080/
+```
+
+And you should see the welcome page of the Apache web server.
 
 ## Ansible
 
