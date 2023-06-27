@@ -11,6 +11,9 @@ Vagrant.configure("2") do |config|
   config.vm.box = "debian/bookworm64"
 
   config.vm.hostname = 'sidon'
+
+  # Expose the HTTP port (80) of the VM to the host
+  config.vm.network "forwarded_port", guest: 80, host: 8080
   
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine

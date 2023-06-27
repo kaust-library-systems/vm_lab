@@ -52,5 +52,34 @@ The basic [Vagrant commands](docs/vagrant.md) are:
 | reload | restart the VM |
 | destroy | deletes the VM |
 
+## Configuration
+
+The focus of this lab is in Ansible, but it's possible to do simple configuration directly in the Vagrant file. As an example we will [install the Apache webserver](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11). But first we need to [expose the HTTP port](https://developer.hashicorp.com/vagrant/docs/networking/forwarded_ports) of the virtual machine to the host (our computer):
+
+```
+  # Expose the HTTP port (80) of the VM to the host
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+```
+
+Next we restart the VM to add the new configuration:
+
+```
+vagrant reload
+```
+
+Finally we add the web server:
+
+```
+vagrant@sidon:~$ sudo apt update
+vagrant@sidon:~$ sudo apt install apache2
+vagrant@sidon:~$ sudo systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; preset: enabled)
+     Active: active (running)
+     (...)
+```
+
+
 ## Ansible
 
+Ansible is often described as a _configuration management tool_ and with this kind of tool, the user describe the desired state of the server: which packages should be installed, the configuration files have the expected values, the right permissions, and so on. Another use of Ansible is with _orchestration_, that is, the coordination of the deployment of servers or services. For example, the database has to started before the web server.
