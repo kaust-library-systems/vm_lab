@@ -54,17 +54,20 @@ The basic [Vagrant commands](docs/vagrant.md) are:
 
 ## Apache2
 
-The focus of this lab is in Ansible, but it's possible to do simple configuration directly in the Vagrant file. As an example we will [install the Apache webserver](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11). But first we need to [expose the HTTP port](https://developer.hashicorp.com/vagrant/docs/networking/forwarded_ports) of the virtual machine to the host (our computer):
+The focus of this lab is in Ansible, but it's possible to do simple configuration directly in the Vagrant file. As an example we will [install the Apache webserver](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11), first directly on the server (that is "by-hand"), and then using the _provisioning_ option in Vagrant. In either ways, we will need to [expose the HTTP port](https://developer.hashicorp.com/vagrant/docs/networking/forwarded_ports) of the virtual machine to the host (our computer):
+
 
 ```
   # Expose the HTTP port (80) of the VM to the host
   config.vm.network "forwarded_port", guest: 80, host: 8080
 ```
 
-Next we restart the VM to add the new configuration:
+### Directly on the Server
+
+Start the server (the VM):
 
 ```
-vagrant reload
+vagrant up
 ```
 
 Finally we add the web server:
@@ -86,6 +89,39 @@ http://localhost:8080/
 ```
 
 And you should see the welcome page of the Apache web server.
+
+### Vagrant Provisioning
+
+Another option is to do the provisioning with Vagrant, via [`shell provisioner`](https://developer.hashicorp.com/vagrant/docs/provisioning/shell). The easiest way to put the script directly in the Vagrant file (`inline`), but an interestion alternative is to put the script in separated file (`path`), which can be even on a remote server.
+
+> It's better to destroy the VM between this kind of test.
+
+Using the `inline` option first. Add the following script to the beginning of the Vagranf file
+
+```
+(...)
+$script = <<-SCRIPT
+echo I am provisioning...
+sudo apt update
+sudo apt install -y apache2
+SCRIPT
+```
+
+Then call the script
+
+```
+Vagrant.configure("2") do |config|
+  (...)
+  config.vm.provision "shell", inline: $script
+  (...)  
+end
+```
+
+Again it's possible to check the web server on the host:
+
+```
+http://localhost:8080/
+```
 
 ## Ansible
 
